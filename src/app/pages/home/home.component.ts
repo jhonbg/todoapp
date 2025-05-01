@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Task } from './../../models/task.model';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +10,31 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
 
-    tasks = signal([
-      'Instalar el Angular CLI',
-      'Crear proyecto',
-      'Crear componentes',
-      'Crear servicio'
+    tasks = signal<Task[]>([
+      {
+        id: Date.now(),
+        title: 'Crear proyecto',
+        completed: false
+      },
+      {
+        id: Date.now(),
+        title: 'Crear componente',
+        completed: false
+      },
     ]);
 
     chageHandler(event: Event) {
       const input = event.target as HTMLInputElement;
       const newTask = input.value;
+      this.addTaks(newTask);
+    }
+
+    addTaks(title: string) {
+      const newTask = {
+        id: Date.now(),
+        title,
+        completed: false
+      };
       this.tasks.update((tasks) => [...tasks, newTask]);
     }
 
