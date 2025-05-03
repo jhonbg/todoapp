@@ -57,8 +57,17 @@
       <!-- This footer should be hidden by default and shown when there are todos -->
       <footer class="footer">
         <!-- This should be `0 items left` by default -->
-        <span class="todo-count" *ngIf="tasks().length > 1; else item" ><strong>{{ tasks().length }}</strong> items</span>
-        <ng-template #item> <span class="todo-count"><strong>{{ tasks().length }}</strong> item</span></ng-template>
+        <span class="todo-count">
+          <strong>
+            {{ tasks().length }}
+          </strong> 
+          <span *ngIf="tasks().length > 1; else item" >
+            items
+          </span>
+          <ng-template #item>
+            item
+          </ng-template>
+        </span>
         <!-- Remove this if you don't implement routing -->
         <ul class="filters">
           <li>
