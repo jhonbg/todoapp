@@ -71,13 +71,13 @@
         <!-- Remove this if you don't implement routing -->
         <ul class="filters">
           <li>
-            <a (click)="chageFilter('all')" class="selected">All</a>
+            <a (click)="chageFilter('all')" [class.selected]="filter() === 'all'">All</a>
           </li>
           <li>
-            <a (click)="chageFilter('pending')" >Pending</a>
+            <a (click)="chageFilter('pending')" [class.selected]="filter() === 'pending'">Pending</a>
           </li>
           <li>
-            <a (click)="chageFilter('completed')" >Completed</a>
+            <a (click)="chageFilter('completed')" [class.selected]="filter() === 'completed'">Completed</a>
           </li>
         </ul>
         <!-- Hidden if no completed items are left ↓ -->
